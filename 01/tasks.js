@@ -5,7 +5,12 @@
  * '1 и 6.45, -2, но 8, а затем 15, то есть 2.7 и -1028' => { min: -1028, max: 15 }
  */
 function getMinMax(string) {
+  const values = string.match(/-?(0|[1-9]\d*)(\.\d+)?/gi);
 
+  return {
+    min: Math.min.apply(null, values),
+    max: Math.max.apply(null, values)
+  };
 }
 
 /* ============================================= */
@@ -16,10 +21,12 @@ function getMinMax(string) {
  * @return {number} число под номером х
  */
 function fibonacciSimple(x) {
-  return x;
+  return x < 2 ? x : fibonacciSimple(x - 1) + fibonacciSimple(x - 2);
 }
 
 /* ============================================= */
+
+var cache = [0, 1];
 
 /**
  * Напишите функцию для вычисления числа Фибоначчи с мемоизацией:
@@ -28,7 +35,11 @@ function fibonacciSimple(x) {
  * @return {number} число под номером х
  */
 function fibonacciWithCache(x) {
-  return x;
+  if (cache[x] === undefined) {
+    cache[x] = fibonacciWithCache(x - 1) + fibonacciWithCache(x - 2);
+  }
+
+  return cache[x];
 }
 
 /* ============================================= */
@@ -49,7 +60,32 @@ function fibonacciWithCache(x) {
  * @return {string}
  */
 function printNumbers(max, cols) {
+  const rows = Math.ceil((max + 1) / cols);
+  let s = '';
 
+  for (let i = 0; i < rows; ++i) {
+    if (i) {
+      s += '\n';
+    }
+
+    for (let j = 0; j < cols && i * cols + j <= max; ++j) {
+      let x = j * rows + i;
+
+      if ((max + 1) % cols) {
+        x -= Math.max(0, (j - (max + 1) % cols));
+      }
+
+      if (j) {
+        s += ' ';
+      }
+      if (x < 10) {
+        s += ' ';
+      }
+      s += x;
+    }
+  }
+
+  return s;
 }
 
 /* ============================================= */
@@ -60,7 +96,7 @@ function printNumbers(max, cols) {
  * @return {string}
  */
 function rle(input) {
-
+  return input.replace(/(.)\1+/g, match => match[0] + match.length);
 }
 
 module.exports = {
