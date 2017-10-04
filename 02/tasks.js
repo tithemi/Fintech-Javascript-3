@@ -3,12 +3,24 @@
  * Доп. задание: предложите несколько вариантов решения.
  */
 function timer(logger = console.log) {
-  for (var i = 0; i < 10; i++) {
+  for (let i = 0; i < 10; i++) {
     setTimeout(() => {
       logger(i);
     }, 100);
   }
 }
+
+/*
+function new_timer(logger = console.log) {
+  for (var i = 0; i < 10; i++) {
+    const temp = i;
+
+    setTimeout(() => {
+      logger(temp);
+    }, 100);
+  }
+}
+*/
 
 /*= ============================================ */
 
@@ -20,7 +32,7 @@ function timer(logger = console.log) {
  * @return {Function} функция с нужным контекстом
  */
 function customBind(func, context, ...args) {
-
+  return (...rest) => func.apply(context, args.concat(rest));
 }
 
 /*= ============================================ */
@@ -33,7 +45,21 @@ function customBind(func, context, ...args) {
  * sum :: void -> Number
  */
 function sum(x) {
-  return 0;
+  if (x === undefined) {
+    return 0;
+  }
+
+  function inner(add) {
+    if (add === undefined) {
+      return x;
+    }
+
+    x += add;
+
+    return inner;
+  }
+
+  return inner;
 }
 
 /*= ============================================ */
@@ -45,7 +71,7 @@ function sum(x) {
  * @return {boolean}
  */
 function anagram(first, second) {
-  return false;
+  return [...first].sort().join('') === [...second].sort().join('');
 }
 
 /*= ============================================ */
@@ -57,7 +83,7 @@ function anagram(first, second) {
  * @return {Array<number>} массив уникальных значений, отсортированный по возрастанию
  */
 function getUnique(arr) {
-  return [];
+  return [...new Set(arr)].sort();
 }
 
 /**
@@ -67,7 +93,16 @@ function getUnique(arr) {
  * @return {Array<number>} массив уникальных значений, отсортированный по возрастанию
  */
 function getIntersection(first, second) {
-  return [];
+  const firstSet = new Set(first);
+  const result = [];
+
+  for (const i of new Set(second)) {
+    if (firstSet.has(i)) {
+      result.push(i);
+    }
+  }
+
+  return result.sort((a, b) => a - b);
 }
 
 /* ============================================= */
@@ -86,7 +121,23 @@ function getIntersection(first, second) {
  * @return {boolean}
  */
 function isIsomorphic(left, right) {
+  if (left.length !== right.length) {
+    return false;
+  }
 
+  for (let i = 0; i < left.length; ++i) {
+    if (left[i] !== right[i]) {
+      for (let j = i + 1; j < left.length; ++j) {
+        if (left[j] !== right[j]) {
+          return false;
+        }
+      }
+
+      break;
+    }
+  }
+
+  return true;
 }
 
 module.exports = {
