@@ -83,7 +83,7 @@ function anagram(first, second) {
  * @return {Array<number>} массив уникальных значений, отсортированный по возрастанию
  */
 function getUnique(arr) {
-  return [...new Set(arr)].sort();
+  return [...new Set(arr)].sort((a, b) => a - b);
 }
 
 /**
