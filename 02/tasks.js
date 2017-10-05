@@ -71,7 +71,30 @@ function sum(x) {
  * @return {boolean}
  */
 function anagram(first, second) {
-  return [...first].sort().join('') === [...second].sort().join('');
+  function countChars(string) {
+    const counts = {};
+
+    for (const i of string) {
+      counts[i] = counts[i] ? counts[i] + 1 : 1;
+    }
+
+    return counts;
+  }
+
+  function equals(left, right) {
+    for (const key in left) {
+      if (left[key] !== right[key]) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  const firstCounts = countChars(first);
+  const secondsCounts = countChars(second);
+
+  return equals(firstCounts, secondsCounts) && equals(secondsCounts, firstCounts);
 }
 
 /*= ============================================ */
