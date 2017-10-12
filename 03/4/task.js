@@ -6,7 +6,11 @@
  */
 
 function promiseRace(promises) {
-  return Promise.resolve(null);
+  return new Promise((resolve, reject) => {
+    for (let i = 0; i < promises.length; i++) {
+      promises[i].then(x => resolve(x), y => reject(y));
+    }
+  });
 }
 
 module.exports = promiseRace;
