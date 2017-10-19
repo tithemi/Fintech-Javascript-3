@@ -1,0 +1,24 @@
+h1 {
+  text-align: center;
+  color: #ff2c67;
+}
+
+p {
+  text-indent: 24px;
+  font-size: 1.5em;
+  margin: 0 10px;
+}
+
+ul {
+  list-style: square outside;
+}
+
+li {
+  padding: 4px;
+  font-size: 1.2em;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}

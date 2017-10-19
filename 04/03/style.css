@@ -1,0 +1,11 @@
+ul li {
+  color: yellow;
+}
+
+ol li {
+  color: blue;
+}
+
+li span {
+  color: black;
+}
