@@ -1,0 +1,134 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.menu {
+  background-color: #3e4757;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 826px;
+  /*max-height: 65px;*/
+  padding: 0 20px;
+}
+
+.menu-bar {
+  /*padding: 0;*/
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu_item {
+  display: flex;
+  list-style-type: none;
+  height: 100%;
+
+  /*border-bottom: 3px solid transparent;*/
+  /*width: 0px;*/
+  transition: border-bottom 0.2s ease-in;
+}
+
+.menu_item-content {
+  text-decoration: none;
+  height: 15px;
+  font-size: 13px;
+  letter-spacing: 0.9px;
+  padding: 28px 0 19px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.menu_item-active {
+  border-bottom: 3px solid #ffdd2d;
+}
+
+/*.menu_item:hover {*/
+  /*border-bottom: 3px solid #ffdd2d;*/
+/*}*/
+
+.menu_item:hover {
+  border-bottom: 3px solid #ffdd2d;
+  /*width: 200px;*/
+}
+
+.banner {
+  z-index: 0;
+  max-height: 413px;
+  background-image: linear-gradient(to right, #1489e7, #003e82);
+  /*display: flex;*/
+  overflow: hidden;
+  position: relative;
+}
+
+.img-cards {
+  margin: -86px 0 0 -160px;
+  height: 550px;
+}
+
+.wrapper--banner {
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  max-width: 828px;
+}
+
+.wrapper--banner:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-image: url(img/cards.png);
+  background-position: 50% 63%;
+  background-size: 576px;
+  background-repeat: no-repeat;
+  content: '';
+  transform: translate(-286px);
+}
+
+.text {
+  margin: 26px 50%;
+  height: 413px;
+  display: flex;
+  flex-direction: column;
+}
+
+.text-header {
+  margin: 65px 13px 18px;
+  font-size: 50px;
+  font-weight: 100;
+  line-height: 1;
+  color: #fff;
+}
+
+.text-content {
+  margin: 0 13px 20px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.banner-button {
+  margin: 0 13px 20px;
+  width: 212px;
+  height: 62px;
+  border-radius: 6px;
+  background-color: #ffdd2d;
+  border: none;
+  font-size: 17px;
+  line-height: 1.41;
+  font-family: Roboto, sans-serif;
+  color: #333;
+  cursor: pointer;
+}
