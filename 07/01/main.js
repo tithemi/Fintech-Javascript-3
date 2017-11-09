@@ -6,16 +6,24 @@ const formatPhoneNumber = number => {
   const digits = match ? match.join('') : '7';
   let output = '+7';
 
-  if (digits.length < 2) { return output; }
+  if (digits.length < 2) {
+    return output;
+  }
   output += `(${digits.substr(1, 3)}`;
 
-  if (digits.length < 5) { return output; }
+  if (digits.length < 5) {
+    return output;
+  }
   output += `)-${digits.substr(4, 3)}`;
 
-  if (digits.length < 8) { return output; }
+  if (digits.length < 8) {
+    return output;
+  }
   output += `-${digits.substr(7, 2)}`;
 
-  if (digits.length < 10) { return output; }
+  if (digits.length < 10) {
+    return output;
+  }
 
   return `${output}-${digits.substr(9, 2)}`;
 };
